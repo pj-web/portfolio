@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pavel Ivanov — Email Developer</title>
+  <meta name="description" content="Hand-coded HTML email that survives Outlook's Word engine, dark mode, and images-off. Engineering case studies.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap">
+      <div class="brand">
+        <span class="mark">PAVEL&nbsp;IVANOV</span>
+        <span class="role">Email Developer</span>
+      </div>
+      <nav class="topnav">
+        <a href="https://github.com/pj-web">GitHub <span class="arr">&#8599;</span></a>
+        <a href="https://www.linkedin.com/in/pavel-email-dev">LinkedIn <span class="arr">&#8599;</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== INTRO =====
+         NOTE: the tagline wording is positioning copy — keep it in sync with the CV
+         headline (source of truth lives in the strategic project). This is a
+         work-descriptive placeholder, safe to ship, but reconcile with CV/LinkedIn. -->
+    <section class="intro">
+      <div class="wrap">
+        <h1 class="who">Email that survives the inbox.</h1>
+        <p class="tagline">I hand-code HTML email that renders the same in <strong>Outlook&rsquo;s Word engine</strong>, in <strong>dark mode</strong>, and with <strong>images switched off</strong> &mdash; then prove it across real clients.</p>
+      </div>
+    </section>
+
+    <!-- ===== CASES ===== -->
+    <section class="cases">
+      <div class="wrap">
+        <p class="sec-label">Case studies</p>
+
+        <div class="case-grid">
+
+          <!-- LIVE: VERTO -->
+          <a class="case-card" href="verto/case.html">
+            <div class="case-thumb" style="background-image:linear-gradient(135deg,#3a1c71 0%,#d76d77 55%,#ffaf7b 100%);">
+              <span class="label">VERTO</span>
+            </div>
+            <div class="case-body">
+              <span class="case-num">Case 01</span>
+              <h3>Mid-Season Sale</h3>
+              <p class="case-desc">A promotional email engineered for Outlook VML, dark mode, and an images-off fallback.</p>
+              <div class="case-tags"><span>promo</span><span>VML</span><span>dark mode</span></div>
+            </div>
+          </a>
+
+          <!-- SOON: Case 02 -->
+          <div class="case-card is-soon">
+            <div class="case-thumb"><span class="badge-soon">In progress</span><span class="label">02</span></div>
+            <div class="case-body">
+              <span class="case-num">Case 02</span>
+              <h3>Welcome flow</h3>
+              <p class="case-desc">A multi-step onboarding sequence &mdash; dark-mode-first build.</p>
+              <div class="case-tags"><span>lifecycle</span><span>dark mode</span></div>
+            </div>
+          </div>
+
+          <!-- SOON: Case 03 -->
+          <div class="case-card is-soon">
+            <div class="case-thumb"><span class="badge-soon">In progress</span><span class="label">03</span></div>
+            <div class="case-body">
+              <span class="case-num">Case 03</span>
+              <h3>Coming soon</h3>
+              <p class="case-desc">Next demo in the series.</p>
+              <div class="case-tags"><span>tbd</span></div>
+            </div>
+          </div>
+
+          <!-- SOON: Case 04 -->
+          <div class="case-card is-soon">
+            <div class="case-thumb"><span class="badge-soon">In progress</span><span class="label">04</span></div>
+            <div class="case-body">
+              <span class="case-num">Case 04</span>
+              <h3>Coming soon</h3>
+              <p class="case-desc">Next demo in the series.</p>
+              <div class="case-tags"><span>tbd</span></div>
+            </div>
+          </div>
+
+          <!-- ============================================================
+               ADD A NEW CASE — copy the block below, change the 5 marked spots,
+               and drop the case folder at  /portfolio/<slug>/case.html
+               (it links back to ../assets/css/site.css automatically).
+
+          <a class="case-card" href="SLUG/case.html">                         (1) folder slug
+            <div class="case-thumb" style="background-image:linear-gradient(135deg,#AAA 0%,#BBB 100%);">  (2) brand accent
+              <span class="label">BRAND</span>                                 (3) brand wordmark
+            </div>
+            <div class="case-body">
+              <span class="case-num">Case 0N</span>                            (4) number
+              <h3>Case title</h3>
+              <p class="case-desc">One line on what it demonstrates.</p>       (5) copy + tags
+              <div class="case-tags"><span>tag</span><span>tag</span></div>
+            </div>
+          </a>
+
+               When a placeholder becomes real: replace one ".case-card is-soon"
+               div above with a filled-in copy of this block.
+          ============================================================ -->
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Hand-coded email, cross-client proofs, no builders. Demo brands are fictional, created for portfolio use.</p>
+      <div class="flinks">
+        <a href="https://github.com/pj-web">GitHub &#8599;</a>
+        <a href="https://www.linkedin.com/in/pavel-email-dev">LinkedIn &#8599;</a>
+        <a href="mailto:emailcodedev@gmail.com">Email &#8599;</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
