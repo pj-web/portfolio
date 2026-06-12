@@ -46,8 +46,23 @@
 
           <!-- LIVE: VERTO -->
           <a class="case-card" href="verto/case.html">
-            <div class="case-thumb" style="background-image:linear-gradient(135deg,#3a1c71 0%,#d76d77 55%,#ffaf7b 100%);">
+            <!-- <div class="case-thumb" style="background-image:linear-gradient(135deg,#3a1c71 0%,#d76d77 55%,#ffaf7b 100%);">
               <span class="label">VERTO</span>
+            </div> -->
+            <div class="case-thumb">
+              <picture>
+                <!-- Retina + обычные экраны в формате WebP (основной выбор современных браузеров) -->
+                <source type="image/webp" srcset="assets/img/verto-thumb.webp 1x, assets/img/verto-thumb@2x.webp 2x">
+                
+                <!-- Бекап для старых браузеров, которые не знают про WebP -->
+                <source type="image/jpeg" srcset="assets/img/verto-thumb.jpg 1x, assets/img/verto-thumb@2x.jpg 2x">
+                
+                <!-- Физический тег изображения с ленивой загрузкой -->
+                <img src="assets/img/verto-thumb.jpg" 
+                    alt="VERTO Mid-Season Sale Email Template" 
+                    loading="lazy" 
+                    decoding="async">
+              </picture>
             </div>
             <div class="case-body">
               <span class="case-num">Case 01</span>

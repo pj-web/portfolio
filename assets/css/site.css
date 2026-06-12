@@ -139,7 +139,23 @@ figcaption .mode { color: var(--coral); }
 }
 a.case-card:hover { transform: translateY(-3px); border-color: var(--coral-strong); color: var(--text); }
 
-.case-thumb { aspect-ratio: 16 / 10; display: grid; place-items: center; position: relative; }
+.case-thumb { 
+  aspect-ratio: 16 / 10; 
+  display: block; /* Убираем grid, если там теперь только картинка */
+  position: relative; 
+  overflow: hidden; /* Чтобы скругления карточки не резались углами картинки */
+  background: var(--panel-2); /* Легкий фон, пока картинка грузится */
+}
+
+/* Настройки для picture и img, чтобы изображение вело себя адаптивно */
+.case-thumb picture,
+.case-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Картинка заполнит область 16/10 без деформации */
+  object-position: top center; /* Скриншот письма лучше центрировать по верху */
+}
 .case-thumb .label { font-family: var(--display); font-weight: 700; letter-spacing: 6px; color: #fff; font-size: 22px; }
 
 .case-body { padding: 20px 22px 24px; }
@@ -171,9 +187,32 @@ footer .flinks a { color: var(--muted); font-family: var(--mono); font-size: 13p
   @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 }
 
-@media (max-width: 560px) {
+/* ---------- MOBILE ----------
+   One consolidated breakpoint. Triggers at 640px because the horizontal
+   header (brand + nav) runs out of room and overflows just under ~600px. */
+@media (max-width: 640px) {
   body { font-size: 16px; }
-  .topnav { gap: 16px; font-size: 12px; }
+
+  /* kill any horizontal overflow that pushes the page left */
+  html, body { overflow-x: hidden; }
+  .wrap { padding: 0 20px; }
+
+  /* HEADER: stack brand over links, centered, AUTO height (the actual fix).
+     The base rule locks height:60px — that's what was clipping the rows.
+     height:auto + vertical padding lets the stacked content breathe. */
+  .topbar .wrap {
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    gap: 12px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    text-align: center;
+  }
+  .brand { flex-direction: column; align-items: center; gap: 4px; }
+  .topnav { justify-content: center; flex-wrap: wrap; gap: 20px; font-size: 12px; }
+
+  /* section rhythm on small screens */
   .hero { padding: 56px 0 48px; }
   .intro { padding: 56px 0 8px; }
   .fault { padding: 22px 20px 22px 24px; }
