@@ -161,7 +161,21 @@
             <figcaption>Outlook &middot; Windows 11<br><span class="mode">dark</span> &middot; images on</figcaption>
           </figure>
           <figure>
-            <div class="shot"><span class="ph">screenshot</span></div>
+            <div class="shot">
+              <picture>
+                <!-- Retina + обычные экраны в формате WebP (основной выбор современных браузеров) -->
+                <source type="image/webp" srcset="../assets/img/verto-thumb.webp 1x, ../assets/img/verto-thumb@2x.webp 2x">
+                
+                <!-- Бекап для старых браузеров, которые не знают про WebP -->
+                <source type="image/jpeg" srcset="../assets/img/verto-thumb.jpg 1x, ../assets/img/verto-thumb@2x.jpg 2x">
+                
+                <!-- Физический тег изображения с ленивой загрузкой -->
+                <img src="../assets/img/verto-thumb.jpg" 
+                    alt="VERTO Mid-Season Sale Email Template" 
+                    loading="lazy" 
+                    decoding="async">
+              </picture>
+            </div>
             <figcaption>Apple Mail &middot; macOS<br><span class="mode">dark</span> &middot; images on</figcaption>
           </figure>
           <figure>
