@@ -148,48 +148,131 @@
       <div class="wrap">
         <p class="sec-label">Proof</p>
         <h2>The same email, across real clients</h2>
-        <p class="sec-intro">Each frame is a real render &mdash; client, OS, dark or light, and whether images were loaded. The images-off frame is the one a generated mockup can&rsquo;t fake.</p>
+        <p class="sec-intro">Each frame is a real render &mdash; client, OS, dark or light, and whether images were loaded. The images-off frame is the one a generated mockup can&rsquo;t fake. <strong>Tap any frame to open the full render.</strong></p>
 
+        <!--
+          Lean image strategy (two files per frame, both .webp):
+            <name>-thumb.webp  -> small, fills the grid tile (object-fit:cover, top)
+            <name>.webp        -> full render, shown in the popover + raw link
+          Both <img> use loading="lazy" decoding="async". No <picture>, no CSS change.
+          Mobile frames (Gmail Android, Apple iOS) sit inside .device (scrollable phone).
+          Desktop frames use <img class="shot-full">.
+          Until the .webp files exist in /assets/proofs/, tiles show alt text / a missing-image glyph — expected.
+        -->
         <div class="proof-grid">
-          <!-- Swap each .ph placeholder for: <img src="../assets/proofs/FILENAME.png" alt="..."> -->
+
+          <!-- 1 · Outlook Win11 · light (desktop) -->
           <figure>
-            <div class="shot"><span class="ph">screenshot</span></div>
+            <button class="shot" popovertarget="pf-ol-light">
+              <img src="../assets/proofs/verto-outlook-win11-light-thumb.webp" alt="VERTO email in Outlook, Windows 11, light mode" loading="lazy" decoding="async">
+              <span class="expand">&#11138; View full</span>
+            </button>
             <figcaption>Outlook &middot; Windows 11<br><span class="mode">light</span> &middot; images on</figcaption>
           </figure>
+          <div id="pf-ol-light" popover class="proof-pop">
+            <div class="pop-head"><span>Outlook &middot; Windows 11 &middot; light</span>
+              <button class="pop-close" popovertarget="pf-ol-light" popovertargetaction="hide" aria-label="Close">&times;</button>
+            </div>
+            <div class="pop-body">
+              <img class="shot-full" src="../assets/proofs/verto-outlook-win11-light.webp" alt="VERTO email, full render — Outlook, Windows 11, light mode" loading="lazy" decoding="async">
+            </div>
+            <p class="pop-cap"><a href="../assets/proofs/verto-outlook-win11-light.webp" target="_blank" rel="noopener">Open full image &#8599;</a></p>
+          </div>
+
+          <!-- 2 · Outlook Win11 · dark (desktop) -->
           <figure>
-            <div class="shot"><span class="ph">screenshot</span></div>
+            <button class="shot" popovertarget="pf-ol-dark">
+              <img src="../assets/proofs/verto-outlook-win11-dark-thumb.webp" alt="VERTO email in Outlook, Windows 11, dark mode" loading="lazy" decoding="async">
+              <span class="expand">&#11138; View full</span>
+            </button>
             <figcaption>Outlook &middot; Windows 11<br><span class="mode">dark</span> &middot; images on</figcaption>
           </figure>
-          <figure>
-            <div class="shot">
-              <picture>
-                <!-- Retina + обычные экраны в формате WebP (основной выбор современных браузеров) -->
-                <source type="image/webp" srcset="../assets/img/verto-thumb.webp 1x, ../assets/img/verto-thumb@2x.webp 2x">
-                
-                <!-- Бекап для старых браузеров, которые не знают про WebP -->
-                <source type="image/jpeg" srcset="../assets/img/verto-thumb.jpg 1x, ../assets/img/verto-thumb@2x.jpg 2x">
-                
-                <!-- Физический тег изображения с ленивой загрузкой -->
-                <img src="../assets/img/verto-thumb.jpg" 
-                    alt="VERTO Mid-Season Sale Email Template" 
-                    loading="lazy" 
-                    decoding="async">
-              </picture>
+          <div id="pf-ol-dark" popover class="proof-pop">
+            <div class="pop-head"><span>Outlook &middot; Windows 11 &middot; dark</span>
+              <button class="pop-close" popovertarget="pf-ol-dark" popovertargetaction="hide" aria-label="Close">&times;</button>
             </div>
+            <div class="pop-body">
+              <img class="shot-full" src="../assets/proofs/verto-outlook-win11-dark.webp" alt="VERTO email, full render — Outlook, Windows 11, dark mode" loading="lazy" decoding="async">
+            </div>
+            <p class="pop-cap"><a href="../assets/proofs/verto-outlook-win11-dark.webp" target="_blank" rel="noopener">Open full image &#8599;</a></p>
+          </div>
+
+          <!-- 3 · Apple Mail macOS · dark (desktop) -->
+          <figure>
+            <button class="shot" popovertarget="pf-apple-macos">
+              <img src="../assets/proofs/verto-apple-macos-dark-thumb.webp" alt="VERTO email in Apple Mail, macOS, dark mode" loading="lazy" decoding="async">
+              <span class="expand">&#11138; View full</span>
+            </button>
             <figcaption>Apple Mail &middot; macOS<br><span class="mode">dark</span> &middot; images on</figcaption>
           </figure>
+          <div id="pf-apple-macos" popover class="proof-pop">
+            <div class="pop-head"><span>Apple Mail &middot; macOS &middot; dark</span>
+              <button class="pop-close" popovertarget="pf-apple-macos" popovertargetaction="hide" aria-label="Close">&times;</button>
+            </div>
+            <div class="pop-body">
+              <img class="shot-full" src="../assets/proofs/verto-apple-macos-dark.webp" alt="VERTO email, full render — Apple Mail, macOS, dark mode" loading="lazy" decoding="async">
+            </div>
+            <p class="pop-cap"><a href="../assets/proofs/verto-apple-macos-dark.webp" target="_blank" rel="noopener">Open full image &#8599;</a></p>
+          </div>
+
+          <!-- 4 · Gmail Android · dark (mobile → device frame) -->
           <figure>
-            <div class="shot"><span class="ph">screenshot</span></div>
+            <button class="shot" popovertarget="pf-gmail-android">
+              <img src="../assets/proofs/verto-gmail-android-dark-thumb.webp" alt="VERTO email in Gmail, Android, dark mode" loading="lazy" decoding="async">
+              <span class="expand">&#11138; View full</span>
+            </button>
             <figcaption>Gmail &middot; Android<br><span class="mode">dark</span> &middot; images on</figcaption>
           </figure>
+          <div id="pf-gmail-android" popover class="proof-pop">
+            <div class="pop-head"><span>Gmail &middot; Android &middot; dark</span>
+              <button class="pop-close" popovertarget="pf-gmail-android" popovertargetaction="hide" aria-label="Close">&times;</button>
+            </div>
+            <div class="pop-body">
+              <div class="device">
+                <img src="../assets/proofs/verto-gmail-android-dark.webp" alt="VERTO email, full render — Gmail, Android, dark mode" loading="lazy" decoding="async">
+              </div>
+            </div>
+            <p class="pop-cap">Scroll inside &middot; <a href="../assets/proofs/verto-gmail-android-dark.webp" target="_blank" rel="noopener">Open full image &#8599;</a></p>
+          </div>
+
+          <!-- 5 · Apple Mail iOS · light (mobile → device frame) -->
           <figure>
-            <div class="shot"><span class="ph">screenshot</span></div>
+            <button class="shot" popovertarget="pf-apple-ios">
+              <img src="../assets/proofs/verto-apple-ios-light-thumb.webp" alt="VERTO email in Apple Mail, iOS, light mode" loading="lazy" decoding="async">
+              <span class="expand">&#11138; View full</span>
+            </button>
             <figcaption>Apple Mail &middot; iOS<br><span class="mode">light</span> &middot; images on</figcaption>
           </figure>
+          <div id="pf-apple-ios" popover class="proof-pop">
+            <div class="pop-head"><span>Apple Mail &middot; iOS &middot; light</span>
+              <button class="pop-close" popovertarget="pf-apple-ios" popovertargetaction="hide" aria-label="Close">&times;</button>
+            </div>
+            <div class="pop-body">
+              <div class="device">
+                <img src="../assets/proofs/verto-apple-ios-light.webp" alt="VERTO email, full render — Apple Mail, iOS, light mode" loading="lazy" decoding="async">
+              </div>
+            </div>
+            <p class="pop-cap">Scroll inside &middot; <a href="../assets/proofs/verto-apple-ios-light.webp" target="_blank" rel="noopener">Open full image &#8599;</a></p>
+          </div>
+
+          <!-- 6 · Outlook Win11 · images OFF (desktop) -->
           <figure>
-            <div class="shot"><span class="ph">screenshot</span></div>
+            <button class="shot" popovertarget="pf-ol-off">
+              <img src="../assets/proofs/verto-outlook-win11-off-thumb.webp" alt="VERTO email in Outlook, Windows 11, images off" loading="lazy" decoding="async">
+              <span class="expand">&#11138; View full</span>
+            </button>
             <figcaption>Outlook &middot; Windows 11<br>light &middot; <span class="mode">images off</span></figcaption>
           </figure>
+          <div id="pf-ol-off" popover class="proof-pop">
+            <div class="pop-head"><span>Outlook &middot; Windows 11 &middot; images OFF</span>
+              <button class="pop-close" popovertarget="pf-ol-off" popovertargetaction="hide" aria-label="Close">&times;</button>
+            </div>
+            <div class="pop-body">
+              <img class="shot-full" src="../assets/proofs/verto-outlook-win11-off.webp" alt="VERTO email, full render — Outlook, Windows 11, images off (ALT text + solid fallback)" loading="lazy" decoding="async">
+            </div>
+            <p class="pop-cap">The frame a generated mockup can&rsquo;t fake &middot; <a href="../assets/proofs/verto-outlook-win11-off.webp" target="_blank" rel="noopener">Open full image &#8599;</a></p>
+          </div>
+
         </div>
       </div>
     </section>
