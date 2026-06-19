@@ -161,13 +161,41 @@ figcaption .mode { color: var(--coral); }
 .pop-cap a { color: var(--coral); }
 .pop-cap a:hover { color: #fff; }
 
-.shot-full { width: 100%; display: block; border-radius: 8px; }            /* desktop frames */
+.shot-full { width: 100%; display: block; border-radius: 8px; }            /* legacy plain img — superseded by .screen */
+
+/* Framed renders: phone bezel for mobile, window bezel for desktop.
+   Both scroll the full-length capture internally, so the popover stays compact
+   regardless of how tall the screenshot is. */
 .device {                                                                  /* mobile frames */
   width: 290px; max-width: 100%; height: min(520px, 70vh); overflow-y: auto;
   border: 9px solid #161922; border-radius: 28px; background: var(--ink);
   box-shadow: 0 0 0 1px var(--line); -webkit-overflow-scrolling: touch;
 }
-.device img { width: 100%; display: block; }
+.screen {                                                                  /* desktop frames */
+  width: 100%; height: min(520px, 66vh); overflow-y: auto;
+  border: 8px solid #161922; border-radius: 14px; background: var(--ink);
+  box-shadow: 0 0 0 1px var(--line); -webkit-overflow-scrolling: touch;
+}
+.device img, .screen img { width: 100%; display: block; }
+
+/* Slim, on-theme scrollbar for the framed renders (replaces the chunky default).
+   .pop-body included as a safety net so no default bar can surface under it. */
+.device, .screen, .pop-body { scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
+.device::-webkit-scrollbar,
+.screen::-webkit-scrollbar,
+.pop-body::-webkit-scrollbar { width: 8px; height: 8px; }
+.device::-webkit-scrollbar-track,
+.screen::-webkit-scrollbar-track,
+.pop-body::-webkit-scrollbar-track { background: transparent; }
+.device::-webkit-scrollbar-thumb,
+.screen::-webkit-scrollbar-thumb,
+.pop-body::-webkit-scrollbar-thumb {
+  background: var(--line); border-radius: 100px;
+  border: 2px solid transparent; background-clip: padding-box;
+}
+.device::-webkit-scrollbar-thumb:hover,
+.screen::-webkit-scrollbar-thumb:hover,
+.pop-body::-webkit-scrollbar-thumb:hover { background: var(--faint); }
 
 @media (prefers-reduced-motion: no-preference) {
   .proof-pop {
